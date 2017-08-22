@@ -57,7 +57,7 @@ const run = () => {
                       "download-dir" : epPath
                     }, function(err, result) {
                         if (err) {
-                            return console.log(err);
+                          return console.log(err);
                         }
                         var id = result.id;
                         console.log('Just added a new torrent.');
