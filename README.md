@@ -6,9 +6,11 @@
 
 ## How to use?
 
-Just edit the `config.json` file and run `npm install`. Once all dependencies are downloaded, run `npm start`.
+1. Edit the `config.json` file
+2. Run `npm install && npm run build`
+3. Run `npm start`
 
-For developement run `npm run dev`. To build: `npm run build`.
+For developement run `npm run dev`.
 
 ## Notes
 
