@@ -2,11 +2,14 @@ import eztv from 'eztv';
 import config from '../config';
 import fs from 'fs';
 import Transmission from 'transmission';
-var transmission = new Transmission({
+
+const transmission = new Transmission({
 	host: 'localhost',
 	username: config.username,
 	password: config.password
 });
+
+run();
 
 const getShow = (showId, cb) => {
   const episodes = {};
@@ -66,7 +69,9 @@ const run = () => {
             }
           })
         })
-      })
+      });
+
+      setTimeout(run, config.interval * 1000);
     });
   });
 }
