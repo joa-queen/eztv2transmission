@@ -5,8 +5,8 @@ import Transmission from 'transmission';
 
 const transmission = new Transmission({
 	host: 'localhost',
-	username: config.username,
-	password: config.password
+	username: config.transmission.username,
+	password: config.transmission.password
 });
 
 const getShow = (showId, cb) => {
