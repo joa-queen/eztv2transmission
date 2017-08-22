@@ -9,8 +9,6 @@ const transmission = new Transmission({
 	password: config.password
 });
 
-run();
-
 const getShow = (showId, cb) => {
   const episodes = {};
   
@@ -22,7 +20,7 @@ const getShow = (showId, cb) => {
       if (!episodes[`s${ep.seasonNumber}`][`e${ep.episodeNumber}`]) {
         episodes[`s${ep.seasonNumber}`][`e${ep.episodeNumber}`] = [];
       }
-
+      
       episodes[`s${ep.seasonNumber}`][`e${ep.episodeNumber}`].push(ep);
     });
     
@@ -40,7 +38,7 @@ const run = () => {
       console.log('Creating path directory...');
       fs.mkdirSync(showPath);
     }
-  
+    
     getShow(show.id, (episodes) => {
       Object.keys(episodes).map((season) => {
         Object.keys(episodes[season]).map((episode) => {
@@ -56,12 +54,12 @@ const run = () => {
                     transmission.addUrl(ep.magnet, {
                       "download-dir" : epPath
                     }, function(err, result) {
-                        if (err) {
-                          return console.log(err);
-                        }
-                        var id = result.id;
-                        console.log('Just added a new torrent.');
-                        console.log('Torrent ID: ' + id);
+                      if (err) {
+                        return console.log(err);
+                      }
+                      var id = result.id;
+                      console.log('Just added a new torrent.');
+                      console.log('Torrent ID: ' + id);
                     });
                   }
                 }
@@ -70,8 +68,10 @@ const run = () => {
           })
         })
       });
-
+      
       setTimeout(run, config.interval * 1000);
     });
   });
 }
+
+run();
