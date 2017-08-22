@@ -1,5 +1,6 @@
 export default {
   savePath: '/Users/joaco/Desktop',
+  interval: 300,
   transmission: {
     username: 'transmission',
     password: 'transmission'
