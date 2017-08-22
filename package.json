@@ -1,0 +1,27 @@
+{
+  "name": "eztv2transmission",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "dev": "yarn dev:start",
+    "dev:start": "nodemon --ignore lib --exec babel-node src/index",
+    "build": "rimraf lib && babel src -d lib --ignore .test.js",
+    "prod:start": "cross-env NODE_ENV=production pm2 start lib/index.js && pm2 logs",
+    "prod:stop": "pm2 delete index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eztv": "^0.0.10",
+    "transmission": "^0.4.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "cross-env": "^5.0.1",
+    "pm2": "^2.5.0",
+    "rimraf": "^2.6.1"
+  }
+}
