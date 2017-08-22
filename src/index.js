@@ -49,14 +49,8 @@ const run = () => {
                 if (ep.extra.indexOf(quality) > -1 && !found) {
                   found = true;
                   const epPath = showPath + '/' + getPath(ep.seasonNumber, ep.episodeNumber) + '/';
-                  let isEmpty = false;
-                  fs.readdirSync(epPath, function(err, files) {
-                    if (!files.length) {
-                      isEmpty = true;
-                    }
-                  });
 
-                  if (!fs.existsSync(epPath) || isEmpty) {
+                  if (!fs.existsSync(epPath) || !fs.readdirSync(epPath).length) {
                     console.log(`Downloading ${epPath}`);
                     transmission.addUrl(ep.magnet, {
                       "download-dir" : epPath
