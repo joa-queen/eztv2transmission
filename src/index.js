@@ -49,7 +49,7 @@ const run = () => {
                 if (ep.extra.indexOf(quality) > -1 && !found) {
                   found = true;
                   const epPath = showPath + '/' + getPath(ep.seasonNumber, ep.episodeNumber) + '/';
-                  if (!fs.existsSync(epPath) && ep.seasonNumber === 5 && ep.episodeNumber === 3) {
+                  if (!fs.existsSync(epPath)) {
                     console.log(`Downloading ${epPath}`);
                     transmission.addUrl(ep.magnet, {
                       "download-dir" : epPath
